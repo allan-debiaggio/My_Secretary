@@ -14,9 +14,21 @@ def play_music() :
 
 def text_to_speech() :
     engine = pyttsx3.init()
-    voices = engine.getProperty('voices')       # getting details of current voice
-    engine.setProperty('voice', voices[1].id)   # changing index, changes voices. 0 for male, 1 for female
-    engine.say("Next person in line, present yourself please.")
+    voice_id = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_FR-FR_HORTENSE_11.0"
+    # Getting the french voice and setting it as voice_id
+    engine.setProperty("voice",voice_id)
+    engine.say("Personne suivante, s'il vous plaît.")
     engine.runAndWait()
 
+def get_input() :
+    user_input = str(input("Quel est votre nom, s'il vous plaît ?"))
+    return user_input
+
+def names_list() :
+    names = []
+    user_input = get_input()
+    names.append(user_input)
+
+
 main()
+
